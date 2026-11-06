@@ -1,0 +1,49 @@
+@layer components {
+  .pk-app-shell {
+    display: flex;
+    min-height: 100vh;
+    background: var(--color-bg-primary);
+  }
+
+  :root:not([data-theme="dark"]) .pk-app-shell {
+    --color-bg-primary: var(--color-light-bg-primary);
+  }
+
+  [data-theme="dark"] .pk-app-shell {
+    --color-bg-primary: var(--color-dark-bg-primary);
+  }
+
+  .pk-app-shell__main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: margin-left 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media (max-width: 1024px) {
+    .pk-app-shell__main {
+      margin-left: 0 !important;
+    }
+  }
+
+  .pk-app-shell__content {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+  }
+
+  @media (max-width: 768px) {
+    .pk-app-shell__content {
+      padding: 16px;
+      padding-bottom: 88px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .pk-app-shell__content {
+      padding: 12px;
+      padding-bottom: 80px;
+    }
+  }
+}

@@ -1,0 +1,145 @@
+@layer components {
+  .pk-avatar {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: var(--color-light-surface-tertiary);
+  }
+
+  [data-theme="dark"] .pk-avatar {
+    background: var(--color-dark-surface-tertiary);
+  }
+
+  .pk-avatar--circle {
+    border-radius: 50%;
+  }
+
+  .pk-avatar--square {
+    border-radius: 8px;
+  }
+
+  .pk-avatar--xs { width: 24px; height: 24px; font-size: 0.625rem; }
+  .pk-avatar--sm { width: 32px; height: 32px; font-size: 0.75rem; }
+  .pk-avatar--md { width: 40px; height: 40px; font-size: 0.875rem; }
+  .pk-avatar--lg { width: 48px; height: 48px; font-size: 1rem; }
+  .pk-avatar--xl { width: 64px; height: 64px; font-size: 1.25rem; }
+
+  .pk-avatar__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .pk-avatar__initials {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    color: var(--color-light-text-primary);
+  }
+
+  [data-theme="dark"] .pk-avatar__initials {
+    color: var(--color-dark-text-primary);
+  }
+
+  .pk-avatar__status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    height: 30%;
+    min-width: 8px;
+    min-height: 8px;
+    border-radius: 50%;
+    border: 2px solid;
+  }
+
+  :root:not([data-theme="dark"]) .pk-avatar__status {
+    border-color: var(--color-light-bg-primary);
+  }
+
+  [data-theme="dark"] .pk-avatar__status {
+    border-color: var(--color-dark-bg-primary);
+  }
+
+  .pk-avatar--status-online .pk-avatar__status {
+    background: var(--color-light-status-success);
+  }
+
+  .pk-avatar--status-offline .pk-avatar__status {
+    background: var(--color-light-text-tertiary);
+  }
+
+  .pk-avatar--status-busy .pk-avatar__status {
+    background: var(--color-light-status-error);
+  }
+
+  .pk-avatar--status-away .pk-avatar__status {
+    background: var(--color-light-status-warning);
+  }
+
+  [data-theme="dark"] .pk-avatar--status-online .pk-avatar__status {
+    background: var(--color-dark-status-success);
+  }
+
+  [data-theme="dark"] .pk-avatar--status-offline .pk-avatar__status {
+    background: var(--color-dark-text-tertiary);
+  }
+
+  [data-theme="dark"] .pk-avatar--status-busy .pk-avatar__status {
+    background: var(--color-dark-status-error);
+  }
+
+  [data-theme="dark"] .pk-avatar--status-away .pk-avatar__status {
+    background: var(--color-dark-status-warning);
+  }
+
+  /* Avatar Group */
+  .pk-avatar-group {
+    display: inline-flex;
+  }
+
+  .pk-avatar-group__item {
+    position: relative;
+  }
+
+  .pk-avatar-group__item:not(:first-child) {
+    margin-left: -12px;
+  }
+
+  .pk-avatar-group--xs .pk-avatar-group__item:not(:first-child) { margin-left: -8px; }
+  .pk-avatar-group--sm .pk-avatar-group__item:not(:first-child) { margin-left: -10px; }
+  .pk-avatar-group--md .pk-avatar-group__item:not(:first-child) { margin-left: -12px; }
+  .pk-avatar-group--lg .pk-avatar-group__item:not(:first-child) { margin-left: -14px; }
+  .pk-avatar-group--xl .pk-avatar-group__item:not(:first-child) { margin-left: -16px; }
+
+  .pk-avatar-group__item:focus-within {
+    z-index: 10 !important;
+  }
+
+  .pk-avatar-group__more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-light-text-secondary);
+    background: var(--color-light-surface-secondary);
+    border: 2px solid var(--color-light-bg-primary);
+  }
+
+  [data-theme="dark"] .pk-avatar-group__more {
+    color: var(--color-dark-text-secondary);
+    background: var(--color-dark-surface-secondary);
+    border-color: var(--color-dark-bg-primary);
+  }
+
+  .pk-avatar-group--xs .pk-avatar-group__more { width: 24px; height: 24px; font-size: 0.625rem; }
+  .pk-avatar-group--sm .pk-avatar-group__more { width: 32px; height: 32px; font-size: 0.75rem; }
+  .pk-avatar-group--md .pk-avatar-group__more { width: 40px; height: 40px; font-size: 0.875rem; }
+  .pk-avatar-group--lg .pk-avatar-group__more { width: 48px; height: 48px; font-size: 1rem; }
+  .pk-avatar-group--xl .pk-avatar-group__more { width: 64px; height: 64px; font-size: 1.25rem; }
+}

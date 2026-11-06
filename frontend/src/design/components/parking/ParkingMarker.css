@@ -1,0 +1,297 @@
+@layer components {
+  .pk-parking-marker {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+  }
+
+  .pk-parking-marker:hover {
+    transform: scale(1.1);
+    z-index: 20;
+  }
+
+  .pk-parking-marker:focus-visible {
+    outline: none;
+  }
+
+  .pk-parking-marker:focus-visible .pk-parking-marker__pin {
+    box-shadow: 0 0 0 3px var(--color-brand-primary), var(--shadow-lg);
+  }
+
+  /* Label */
+  .pk-parking-marker__label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
+    box-shadow: var(--shadow-md);
+    transform: translateX(-50%);
+  }
+
+  .pk-parking-marker__price {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 800;
+  }
+
+  .pk-parking-marker__spots {
+    font-size: 0.625rem;
+    font-weight: 600;
+    opacity: 0.9;
+  }
+
+  /* Pin */
+  .pk-parking-marker__pin {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg) translate(50%, 50%);
+    box-shadow: var(--shadow-lg);
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .pk-parking-marker__pin-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 3px solid white;
+    transform: rotate(45deg);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  }
+
+  .pk-parking-marker__status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 2px white;
+  }
+
+  /* Selected ring */
+  .pk-parking-marker__selected-ring {
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-45deg);
+    width: 52px;
+    height: 52px;
+    border-radius: 50% 50% 50% 0;
+    border: 3px solid var(--color-brand-primary);
+    opacity: 0;
+    animation: pk-ring-pulse 1.5s ease-out infinite;
+    pointer-events: none;
+  }
+
+  .pk-parking-marker--selected .pk-parking-marker__selected-ring {
+    opacity: 1;
+  }
+
+  @keyframes pk-ring-pulse {
+    0% {
+      transform: translateX(-50%) rotate(-45deg) scale(0.8);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateX(-50%) rotate(-45deg) scale(1.2);
+      opacity: 0;
+    }
+  }
+
+  /* Availability variants - Light mode */
+  :root:not([data-theme="dark"]) {
+    .pk-parking-marker--available .pk-parking-marker__label {
+      background: var(--color-light-status-success);
+      color: white;
+    }
+    .pk-parking-marker--available .pk-parking-marker__pin {
+      background: var(--color-light-status-success);
+    }
+    .pk-parking-marker--available .pk-parking-marker__status-dot {
+      background: var(--color-light-status-success);
+    }
+
+    .pk-parking-marker--limited .pk-parking-marker__label {
+      background: var(--color-light-status-warning);
+      color: var(--color-light-bg-primary);
+    }
+    .pk-parking-marker--limited .pk-parking-marker__pin {
+      background: var(--color-light-status-warning);
+    }
+    .pk-parking-marker--limited .pk-parking-marker__status-dot {
+      background: var(--color-light-status-warning);
+    }
+
+    .pk-parking-marker--full .pk-parking-marker__label {
+      background: var(--color-light-status-error);
+      color: white;
+    }
+    .pk-parking-marker--full .pk-parking-marker__pin {
+      background: var(--color-light-status-error);
+    }
+    .pk-parking-marker--full .pk-parking-marker__status-dot {
+      background: var(--color-light-status-error);
+    }
+
+    .pk-parking-marker--reserved .pk-parking-marker__label {
+      background: var(--color-light-status-info);
+      color: white;
+    }
+    .pk-parking-marker--reserved .pk-parking-marker__pin {
+      background: var(--color-light-status-info);
+    }
+    .pk-parking-marker--reserved .pk-parking-marker__status-dot {
+      background: var(--color-light-status-info);
+    }
+  }
+
+  /* Availability variants - Dark mode */
+  [data-theme="dark"] {
+    .pk-parking-marker--available .pk-parking-marker__label {
+      background: var(--color-dark-status-success);
+      color: var(--color-dark-bg-primary);
+    }
+    .pk-parking-marker--available .pk-parking-marker__pin {
+      background: var(--color-dark-status-success);
+    }
+    .pk-parking-marker--available .pk-parking-marker__status-dot {
+      background: var(--color-dark-status-success);
+    }
+
+    .pk-parking-marker--limited .pk-parking-marker__label {
+      background: var(--color-dark-status-warning);
+      color: var(--color-dark-bg-primary);
+    }
+    .pk-parking-marker--limited .pk-parking-marker__pin {
+      background: var(--color-dark-status-warning);
+    }
+    .pk-parking-marker--limited .pk-parking-marker__status-dot {
+      background: var(--color-dark-status-warning);
+    }
+
+    .pk-parking-marker--full .pk-parking-marker__label {
+      background: var(--color-dark-status-error);
+      color: white;
+    }
+    .pk-parking-marker--full .pk-parking-marker__pin {
+      background: var(--color-dark-status-error);
+    }
+    .pk-parking-marker--full .pk-parking-marker__status-dot {
+      background: var(--color-dark-status-error);
+    }
+
+    .pk-parking-marker--reserved .pk-parking-marker__label {
+      background: var(--color-dark-status-info);
+      color: white;
+    }
+    .pk-parking-marker--reserved .pk-parking-marker__pin {
+      background: var(--color-dark-status-info);
+    }
+    .pk-parking-marker--reserved .pk-parking-marker__status-dot {
+      background: var(--color-dark-status-info);
+    }
+  }
+
+  /* Cluster marker */
+  .pk-cluster-marker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 3px solid white;
+    background: var(--color-brand-primary);
+    color: white;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 700;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .pk-cluster-marker:hover {
+    transform: scale(1.15);
+  }
+
+  .pk-cluster-marker:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--color-brand-primary-light), var(--shadow-lg);
+  }
+
+  .pk-cluster-marker__count {
+    line-height: 1;
+  }
+
+  /* User location marker */
+  .pk-user-location-marker {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    z-index: 100;
+  }
+
+  .pk-user-location-marker__pulse {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid var(--color-brand-primary);
+    opacity: 0;
+    animation: pk-pulse-ring 2s ease-out infinite;
+  }
+
+  .pk-user-location-marker__pulse:nth-child(2) {
+    animation-delay: 1s;
+  }
+
+  @keyframes pk-pulse-ring {
+    0% {
+      transform: scale(0.5);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  .pk-user-location-marker__dot {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--color-brand-primary);
+    border: 3px solid white;
+    box-shadow: var(--shadow-md);
+    z-index: 1;
+  }
+
+  .pk-user-location-marker__accuracy {
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    background: rgba(0, 102, 204, 0.1);
+    pointer-events: none;
+  }
+}

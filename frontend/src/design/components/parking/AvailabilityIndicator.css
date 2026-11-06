@@ -1,0 +1,339 @@
+@layer components {
+  /* Availability Indicator (Ring) */
+  .pk-availability-indicator {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pk-availability-indicator--sm .pk-availability-indicator__svg { width: 48px; height: 48px; }
+  .pk-availability-indicator--md .pk-availability-indicator__svg { width: 64px; height: 64px; }
+  .pk-availability-indicator--lg .pk-availability-indicator__svg { width: 96px; height: 96px; }
+
+  .pk-availability-indicator__ring {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pk-availability-indicator__bg-circle {
+    stroke: var(--color-surface-tertiary);
+  }
+
+  :root:not([data-theme="dark"]) .pk-availability-indicator__bg-circle {
+    stroke: var(--color-light-surface-tertiary);
+  }
+
+  [data-theme="dark"] .pk-availability-indicator__bg-circle {
+    stroke: var(--color-dark-surface-tertiary);
+  }
+
+  .pk-availability-indicator__progress-circle {
+    transition: stroke-dasharray 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .pk-availability-indicator--available .pk-availability-indicator__progress-circle {
+    stroke: var(--color-status-success);
+  }
+
+  .pk-availability-indicator--limited .pk-availability-indicator__progress-circle {
+    stroke: var(--color-status-warning);
+  }
+
+  .pk-availability-indicator--full .pk-availability-indicator__progress-circle {
+    stroke: var(--color-status-error);
+  }
+
+  .pk-availability-indicator__center {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pk-availability-indicator__percentage {
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+
+  .pk-availability-indicator--sm .pk-availability-indicator__percentage { font-size: 0.875rem; }
+  .pk-availability-indicator--md .pk-availability-indicator__percentage { font-size: 1.25rem; }
+  .pk-availability-indicator--lg .pk-availability-indicator__percentage { font-size: 1.75rem; }
+
+  :root:not([data-theme="dark"]) .pk-availability-indicator__percentage {
+    color: var(--color-light-text-primary);
+  }
+
+  [data-theme="dark"] .pk-availability-indicator__percentage {
+    color: var(--color-dark-text-primary);
+  }
+
+  .pk-availability-indicator__label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .pk-availability-indicator__available {
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+
+  .pk-availability-indicator--available .pk-availability-indicator__available {
+    color: var(--color-status-success);
+  }
+
+  .pk-availability-indicator--limited .pk-availability-indicator__available {
+    color: var(--color-status-warning);
+  }
+
+  .pk-availability-indicator--full .pk-availability-indicator__available {
+    color: var(--color-status-error);
+  }
+
+  .pk-availability-indicator__separator {
+    color: var(--color-text-tertiary);
+  }
+
+  .pk-availability-indicator__total {
+    color: var(--color-text-secondary);
+  }
+
+  /* Availability Bar */
+  .pk-availability-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .pk-availability-bar__track {
+    width: 100%;
+    border-radius: 9999px;
+    background: var(--color-surface-tertiary);
+    overflow: hidden;
+  }
+
+  :root:not([data-theme="dark"]) .pk-availability-bar__track {
+    background: var(--color-light-surface-tertiary);
+  }
+
+  [data-theme="dark"] .pk-availability-bar__track {
+    background: var(--color-dark-surface-tertiary);
+  }
+
+  .pk-availability-bar__fill {
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .pk-availability-bar--available .pk-availability-bar__fill {
+    background: var(--color-status-success);
+  }
+
+  .pk-availability-bar--limited .pk-availability-bar__fill {
+    background: var(--color-status-warning);
+  }
+
+  .pk-availability-bar--full .pk-availability-bar__fill {
+    background: var(--color-status-error);
+  }
+
+  .pk-availability-bar__label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .pk-availability-bar__available {
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+
+  .pk-availability-bar--available .pk-availability-bar__available {
+    color: var(--color-status-success);
+  }
+
+  .pk-availability-bar--limited .pk-availability-bar__available {
+    color: var(--color-status-warning);
+  }
+
+  .pk-availability-bar--full .pk-availability-bar__available {
+    color: var(--color-status-error);
+  }
+
+  .pk-availability-bar__separator {
+    color: var(--color-text-tertiary);
+  }
+
+  .pk-availability-bar__total {
+    color: var(--color-text-secondary);
+  }
+
+  .pk-availability-bar__percentage {
+    margin-left: auto;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+  }
+
+  /* Live Availability */
+  .pk-live-availability {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--color-surface-secondary);
+    border: 1px solid var(--color-border-primary);
+  }
+
+  :root:not([data-theme="dark"]) .pk-live-availability {
+    background: var(--color-light-surface-secondary);
+    border-color: var(--color-light-border-primary);
+  }
+
+  [data-theme="dark"] .pk-live-availability {
+    background: var(--color-dark-surface-secondary);
+    border-color: var(--color-dark-border-primary);
+  }
+
+  .pk-live-availability--sm { padding: 8px 12px; }
+  .pk-live-availability--lg { padding: 16px 20px; }
+
+  .pk-live-availability__main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .pk-live-availability__status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .pk-live-availability__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: pk-pulse 2s ease-in-out infinite;
+  }
+
+  .pk-live-availability--available .pk-live-availability__dot {
+    background: var(--color-status-success);
+  }
+
+  .pk-live-availability--limited .pk-live-availability__dot {
+    background: var(--color-status-warning);
+  }
+
+  .pk-live-availability--full .pk-live-availability__dot {
+    background: var(--color-status-error);
+  }
+
+  @keyframes pk-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.9); }
+  }
+
+  .pk-live-availability__status-text {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+  }
+
+  .pk-live-availability--available .pk-live-availability__status-text {
+    color: var(--color-status-success);
+  }
+
+  .pk-live-availability--limited .pk-live-availability__status-text {
+    color: var(--color-status-warning);
+  }
+
+  .pk-live-availability--full .pk-live-availability__status-text {
+    color: var(--color-status-error);
+  }
+
+  .pk-live-availability__count {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+
+  .pk-live-availability--sm .pk-live-availability__count { font-size: 1rem; }
+  .pk-live-availability--md .pk-live-availability__count { font-size: 1.25rem; }
+  .pk-live-availability--lg .pk-live-availability__count { font-size: 1.5rem; }
+
+  .pk-live-availability__available {
+    color: var(--color-text-primary);
+  }
+
+  .pk-live-availability--available .pk-live-availability__available {
+    color: var(--color-status-success);
+  }
+
+  .pk-live-availability--limited .pk-live-availability__available {
+    color: var(--color-status-warning);
+  }
+
+  .pk-live-availability--full .pk-live-availability__available {
+    color: var(--color-status-error);
+  }
+
+  .pk-live-availability__separator {
+    color: var(--color-text-tertiary);
+  }
+
+  .pk-live-availability__total {
+    color: var(--color-text-secondary);
+  }
+
+  .pk-live-availability__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 8px;
+    border-top: 1px solid var(--color-border-primary);
+  }
+
+  .pk-live-availability__percentage {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .pk-live-availability--available .pk-live-availability__percentage {
+    color: var(--color-status-success);
+  }
+
+  .pk-live-availability--limited .pk-live-availability__percentage {
+    color: var(--color-status-warning);
+  }
+
+  .pk-live-availability--full .pk-live-availability__percentage {
+    color: var(--color-status-error);
+  }
+
+  .pk-live-availability__updated {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 400;
+    color: var(--color-text-tertiary);
+    white-space: nowrap;
+  }
+}

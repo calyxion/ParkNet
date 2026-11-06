@@ -1,0 +1,339 @@
+@layer components {
+  .pk-filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 12px;
+    border: 1px solid;
+    border-radius: 9999px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 150ms ease;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .pk-filter-chip--sm {
+    height: 28px;
+    font-size: 0.6875rem;
+    padding: 0 10px;
+    gap: 4px;
+  }
+
+  .pk-filter-chip--md {
+    height: 36px;
+    font-size: 0.75rem;
+    padding: 0 12px;
+    gap: 6px;
+  }
+
+  .pk-filter-chip--lg {
+    height: 44px;
+    font-size: 0.875rem;
+    padding: 0 16px;
+    gap: 8px;
+  }
+
+  .pk-filter-chip__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .pk-filter-chip__icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .pk-filter-chip--sm .pk-filter-chip__icon svg { width: 14px; height: 14px; }
+  .pk-filter-chip--lg .pk-filter-chip__icon svg { width: 18px; height: 18px; }
+
+  .pk-filter-chip__label {
+    line-height: 1;
+  }
+
+  .pk-filter-chip__count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 5px;
+    border-radius: 9999px;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 700;
+    background: currentColor;
+    color: var(--color-bg-primary);
+    opacity: 0.8;
+  }
+
+  .pk-filter-chip__remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    color: currentColor;
+    opacity: 0.6;
+    transition: all 150ms ease;
+    margin-left: 2px;
+    padding: 0;
+  }
+
+  .pk-filter-chip__remove:hover {
+    opacity: 1;
+    background: currentColor;
+    color: var(--color-bg-primary);
+  }
+
+  /* Variants */
+  /* Default - Light */
+  :root:not([data-theme="dark"]) .pk-filter-chip--default {
+    background: var(--color-light-surface-secondary);
+    border-color: transparent;
+    color: var(--color-light-text-secondary);
+  }
+
+  :root:not([data-theme="dark"]) .pk-filter-chip--default:hover:not(.pk-filter-chip--disabled) {
+    background: var(--color-light-surface-tertiary);
+    color: var(--color-light-text-primary);
+  }
+
+  :root:not([data-theme="dark"]) .pk-filter-chip--default.pk-filter-chip--selected {
+    background: var(--color-brand-primary);
+    color: white;
+  }
+
+  :root:not([data-theme="dark"]) .pk-filter-chip--default.pk-filter-chip--selected:hover {
+    background: var(--color-brand-primary-hover);
+  }
+
+  /* Default - Dark */
+  [data-theme="dark"] .pk-filter-chip--default {
+    background: var(--color-dark-surface-secondary);
+    border-color: transparent;
+    color: var(--color-dark-text-secondary);
+  }
+
+  [data-theme="dark"] .pk-filter-chip--default:hover:not(.pk-filter-chip--disabled) {
+    background: var(--color-dark-surface-tertiary);
+    color: var(--color-dark-text-primary);
+  }
+
+  [data-theme="dark"] .pk-filter-chip--default.pk-filter-chip--selected {
+    background: var(--color-brand-primary);
+    color: white;
+  }
+
+  [data-theme="dark"] .pk-filter-chip--default.pk-filter-chip--selected:hover {
+    background: var(--color-brand-primary-hover);
+  }
+
+  /* Outlined - Light */
+  :root:not([data-theme="dark"]) .pk-filter-chip--outlined {
+    background: transparent;
+    border-color: var(--color-light-border-primary);
+    color: var(--color-light-text-secondary);
+  }
+
+  :root:not([data-theme="dark"]) .pk-filter-chip--outlined:hover:not(.pk-filter-chip--disabled) {
+    border-color: var(--color-brand-primary);
+    color: var(--color-brand-primary);
+    background: var(--color-brand-primary-light);
+  }
+
+  :root:not([data-theme="dark"]) .pk-filter-chip--outlined.pk-filter-chip--selected {
+    background: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+    color: white;
+  }
+
+  /* Outlined - Dark */
+  [data-theme="dark"] .pk-filter-chip--outlined {
+    background: transparent;
+    border-color: var(--color-dark-border-primary);
+    color: var(--color-dark-text-secondary);
+  }
+
+  [data-theme="dark"] .pk-filter-chip--outlined:hover:not(.pk-filter-chip--disabled) {
+    border-color: var(--color-brand-primary);
+    color: #4A9EFF;
+    background: rgba(0, 102, 204, 0.15);
+  }
+
+  [data-theme="dark"] .pk-filter-chip--outlined.pk-filter-chip--selected {
+    background: var(--color-brand-primary);
+    border-color: var(--color-brand-primary);
+    color: white;
+  }
+
+  /* Filled - Light */
+  :root:not([data-theme="dark"]) .pk-filter-chip--filled {
+    background: var(--color-light-surface-tertiary);
+    border-color: transparent;
+    color: var(--color-light-text-primary);
+  }
+
+  :root:not([data-theme="dark"]) .pk-filter-chip--filled:hover:not(.pk-filter-chip--disabled) {
+    background: var(--color-light-border-primary);
+  }
+
+  :root:not([data-theme="dark"]) .pk-filter-chip--filled.pk-filter-chip--selected {
+    background: var(--color-brand-primary);
+    color: white;
+  }
+
+  /* Filled - Dark */
+  [data-theme="dark"] .pk-filter-chip--filled {
+    background: var(--color-dark-surface-tertiary);
+    border-color: transparent;
+    color: var(--color-dark-text-primary);
+  }
+
+  [data-theme="dark"] .pk-filter-chip--filled:hover:not(.pk-filter-chip--disabled) {
+    background: var(--color-dark-border-primary);
+  }
+
+  [data-theme="dark"] .pk-filter-chip--filled.pk-filter-chip--selected {
+    background: var(--color-brand-primary);
+    color: white;
+  }
+
+  /* Disabled */
+  .pk-filter-chip--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* Filter Chip Group */
+  .pk-filter-chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Search Filter */
+  .pk-search-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pk-search-filter__input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .pk-search-filter__icon {
+    position: absolute;
+    left: 14px;
+    width: 20px;
+    height: 20px;
+    color: var(--color-text-tertiary);
+    pointer-events: none;
+    flex-shrink: 0;
+  }
+
+  :root:not([data-theme="dark"]) .pk-search-filter__icon {
+    color: var(--color-light-text-tertiary);
+  }
+
+  [data-theme="dark"] .pk-search-filter__icon {
+    color: var(--color-dark-text-tertiary);
+  }
+
+  .pk-search-filter__input {
+    width: 100%;
+    height: 48px;
+    padding: 0 16px 0 52px;
+    border: 1px solid;
+    border-radius: 12px;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    background: transparent;
+    color: inherit;
+    outline: none;
+    transition: all 150ms ease;
+  }
+
+  :root:not([data-theme="dark"]) .pk-search-filter__input {
+    background: var(--color-light-surface-secondary);
+    border-color: transparent;
+    color: var(--color-light-text-primary);
+  }
+
+  [data-theme="dark"] .pk-search-filter__input {
+    background: var(--color-dark-surface-secondary);
+    border-color: transparent;
+    color: var(--color-dark-text-primary);
+  }
+
+  .pk-search-filter__input:focus {
+    border-color: var(--color-brand-primary);
+    box-shadow: 0 0 0 3px var(--color-brand-primary-light);
+  }
+
+  .pk-search-filter__input::placeholder {
+    color: var(--color-text-tertiary);
+  }
+
+  .pk-search-filter__clear {
+    position: absolute;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    color: var(--color-text-tertiary);
+    transition: all 150ms ease;
+  }
+
+  :root:not([data-theme="dark"]) .pk-search-filter__clear {
+    color: var(--color-light-text-tertiary);
+  }
+
+  [data-theme="dark"] .pk-search-filter__clear {
+    color: var(--color-dark-text-tertiary);
+  }
+
+  .pk-search-filter__clear:hover {
+    background: var(--color-surface-tertiary);
+    color: var(--color-text-primary);
+  }
+
+  [data-theme="dark"] .pk-search-filter__clear:hover {
+    background: var(--color-dark-surface-tertiary);
+    color: var(--color-dark-text-primary);
+  }
+
+  .pk-search-filter__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (max-width: 480px) {
+    .pk-search-filter__chips {
+      overflow-x: auto;
+      padding-bottom: 4px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .pk-search-filter__chips::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
